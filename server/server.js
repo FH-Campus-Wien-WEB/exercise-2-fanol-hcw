@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const movieModel = require('./movie-model.js');
-
 const app = express();
 
 // Parse urlencoded bodies
@@ -15,14 +14,21 @@ app.use(express.static(path.join(__dirname, 'files')));
 app.get('/movies', function (req, res) {
   /* Task 1.2. Remove the line below and eturn the movies from 
      the model as an array */
-  res.sendStatus(404)
+    let movieArray = Object.values(movieModel);
+    res.send(movieArray)
 })
 
 // Configure a 'get' endpoint for a specific movie
 app.get('/movies/:imdbID', function (req, res) {
   /* Task 2.1. Remove the line below and add the 
     functionality here */
-  res.sendStatus(404)
+ let movieId = req.params.imdbID;
+  let movie = movieModel[movieId];
+   if (movie) {
+     res.send(movie);
+   } else {
+     res.status(404).send("Movie not found");
+   }
 })
 
 /* Task 3.1 and 3.2.
