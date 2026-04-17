@@ -35,6 +35,18 @@ app.get('/movies/:imdbID', function (req, res) {
    - Add a new PUT endpoint
    - Check whether the movie sent by the client already exists 
      and continue as described in the assignment */
+app.put('/movies/:imdbID', function (req, res) {
+    let movieId = req.params.imdbID;
+    let newMovieModel = req.body;
+    if (movieModel[movieId]) {
+        movieModel[movieId] = newMovieModel;
+        res.sendStatus(200);
+    } else {
+        movieModel[movieId] = newMovieModel;
+        res.sendStatus(201);
+    }
+
+})
 
 app.listen(3000)
 

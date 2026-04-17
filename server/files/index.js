@@ -10,10 +10,11 @@ window.onload = function () {
            to pass this test */
         let movieArticle = document.createElement("article");
         let movieId = movie.imdbID;
-        movieArticle.id = movie.imdbID
+        movieArticle.id = movieId;
         let image = document.createElement("img");
         image.src = movie.Poster;
         movieArticle.appendChild(image);
+        console.log(movieId);
 
         let title = document.createElement("h1");
         title.textContent = movie.Title;
@@ -22,6 +23,9 @@ window.onload = function () {
         let button = document.createElement("button");
         button.textContent = "Edit";
         movieArticle.appendChild(button);
+        button.onclick = function () {
+          location.href = "edit.html?imdbID=" + movieId;
+        }
 
 
         let runtime =  document.createElement("p");
